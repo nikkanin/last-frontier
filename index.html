@@ -1,84 +1,64 @@
 <!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>ПОСЛЕДНИЙ РУБЕЖ — прототип</title>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>ПОСЛЕДНИЙ РУБЕЖ — район 01</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101719;color:#e8eee9;font-family:Arial,sans-serif;touch-action:none}
-#game{position:fixed;inset:0}canvas{display:block}
-#hud{position:fixed;top:12px;left:12px;right:12px;display:flex;gap:8px;pointer-events:none}
-.stat{background:#101a1dcc;border:1px solid #71817a66;border-radius:8px;padding:7px 10px;font-size:12px;min-width:82px}
-.stat b{display:block;font-size:14px;margin-top:3px;color:#d6e4d8}
-#hint{position:fixed;top:90px;left:50%;transform:translateX(-50%);background:#101a1dcc;padding:8px 12px;border-radius:8px;font-size:12px;text-align:center;pointer-events:none;max-width:85vw}
-#stick{position:fixed;left:22px;bottom:28px;width:118px;height:118px;border-radius:50%;background:#c9d6d022;border:1px solid #d5e0dc66}
-#nub{position:absolute;width:48px;height:48px;left:34px;top:34px;border-radius:50%;background:#dce7df66;border:1px solid #e6eee8aa}
-#actions{position:fixed;right:18px;bottom:28px;display:flex;flex-direction:column;gap:10px}
-button{border:1px solid #aebdb366;background:#15221fe8;color:#f1f5f0;border-radius:10px;padding:13px 16px;font-weight:bold;letter-spacing:.04em}
-#inventory{display:none;position:fixed;inset:15% 8%;background:#101a1af2;border:1px solid #9aaca0;border-radius:14px;padding:18px;overflow:auto}
-#inventory h2{margin:0 0 12px;font-size:18px}#items{line-height:1.9;font-size:14px}
-#close{margin-top:14px}
-#cross{position:fixed;left:50%;top:50%;width:12px;height:12px;transform:translate(-50%,-50%);pointer-events:none}
-#cross:before,#cross:after{content:"";position:absolute;background:#e8eee9aa}
-#cross:before{left:5px;top:0;width:2px;height:12px}#cross:after{left:0;top:5px;width:12px;height:2px}
-@media(min-width:800px){#stick{width:140px;height:140px}#nub{left:45px;top:45px}}
-</style>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
-</head>
-<body>
-<div id="game"></div><div id="cross"></div>
-<div id="hud">
- <div class="stat">ЗДОРОВЬЕ<b id="health">100</b></div>
- <div class="stat">ГОЛОД<b id="hunger">100</b></div>
- <div class="stat">ЖАЖДА<b id="thirst">100</b></div>
-</div>
-<div id="hint">Разведайте улицу. Подойдите к предмету и нажмите «ВЗЯТЬ».</div>
-<div id="stick"><div id="nub"></div></div>
-<div id="actions"><button id="take">ВЗЯТЬ</button><button id="bag">СУМКА</button></div>
-<div id="inventory"><h2>СУМКА</h2><div id="items">Пока пусто</div><button id="close">ЗАКРЫТЬ</button></div>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#18201f;color:#e8eee9;font-family:Arial,sans-serif;touch-action:none}#game{position:fixed;inset:0}canvas{display:block}
+#hud{position:fixed;top:10px;left:10px;right:10px;display:flex;gap:6px;pointer-events:none}.stat{background:#101a1ddd;border:1px solid #87958a66;border-radius:8px;padding:7px 9px;font-size:10px;min-width:72px}.stat b{display:block;font-size:14px;margin-top:3px;color:#dce8dc}
+#hint{position:fixed;top:82px;left:50%;transform:translateX(-50%);background:#101a1ddd;padding:8px 12px;border-radius:8px;font-size:11px;text-align:center;pointer-events:none;max-width:88vw}
+#stick{position:fixed;left:20px;bottom:24px;width:116px;height:116px;border-radius:50%;background:#c9d6d022;border:1px solid #d5e0dc66}#nub{position:absolute;width:48px;height:48px;left:33px;top:33px;border-radius:50%;background:#dce7df77;border:1px solid #e6eee8aa}
+#actions{position:fixed;right:15px;bottom:24px;display:flex;flex-direction:column;gap:9px}button{border:1px solid #aebdb366;background:#15221feF;color:#f1f5f0;border-radius:10px;padding:13px 15px;font-weight:bold;font-size:12px;letter-spacing:.04em}
+#inventory{display:none;position:fixed;inset:15% 8%;background:#101a1af5;border:1px solid #9aaca0;border-radius:14px;padding:18px;overflow:auto}#inventory h2{margin:0 0 12px;font-size:18px}#items{line-height:1.9;font-size:14px}#close{margin-top:14px}
+#cross{position:fixed;left:50%;top:50%;width:12px;height:12px;transform:translate(-50%,-50%);pointer-events:none}#cross:before,#cross:after{content:"";position:absolute;background:#e8eee9bb}#cross:before{left:5px;top:0;width:2px;height:12px}#cross:after{left:0;top:5px;width:12px;height:2px}
+#brand{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.22em;color:#d2ddd477;pointer-events:none;white-space:nowrap}
+</style><script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script></head><body>
+<div id="game"></div><div id="cross"></div><div id="hud"><div class="stat">ЗДОРОВЬЕ<b id="health">100</b></div><div class="stat">ГОЛОД<b id="hunger">100</b></div><div class="stat">ЖАЖДА<b id="thirst">100</b></div></div>
+<div id="hint">РАЙОН 01 · ИССЛЕДУЙТЕ УЛИЦУ И СОБИРАЙТЕ ПРИПАСЫ</div><div id="stick"><div id="nub"></div></div><div id="actions"><button id="take">ВЗЯТЬ</button><button id="bag">СУМКА</button></div><div id="inventory"><h2>СУМКА</h2><div id="items">Пока пусто</div><button id="close">ЗАКРЫТЬ</button></div><div id="brand">ПОСЛЕДНИЙ РУБЕЖ · 2042</div>
 <script type="module">
 import * as THREE from 'three';
-const root=document.querySelector('#game');
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x78827d);scene.fog=new THREE.Fog(0x78827d,18,75);
-const camera=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.1,150);camera.position.set(0,1.7,8);
-const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;root.appendChild(renderer.domElement);
-scene.add(new THREE.HemisphereLight(0xc9d4ce,0x303a34,2));
-const sun=new THREE.DirectionalLight(0xffe6c2,2.1);sun.position.set(-8,15,7);sun.castShadow=true;scene.add(sun);
-const mat=(c,r=.9)=>new THREE.MeshStandardMaterial({color:c,roughness:r});
-const ground=new THREE.Mesh(new THREE.PlaneGeometry(180,180),mat(0x343d38));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
-const road=new THREE.Mesh(new THREE.PlaneGeometry(12,100),mat(0x242b2a));road.rotation.x=-Math.PI/2;road.position.set(0,.015,-24);scene.add(road);
-function block(x,z,w,h,d,color){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color));m.position.set(x,h/2,z);m.castShadow=true;m.receiveShadow=true;scene.add(m);return m}
-for(let i=0;i<9;i++){let z=-i*9-5;block(-11,z,8,5+Math.random()*5,7,0x59615b);block(11,z-3,8,6+Math.random()*4,8,0x4b5550)}
-for(let i=0;i<24;i++){let x=(Math.random()>.5?1:-1)*(7+Math.random()*18),z=5-Math.random()*75;let trunk=new THREE.Mesh(new THREE.CylinderGeometry(.18,.28,2,6),mat(0x3c3028));trunk.position.set(x,1,z);scene.add(trunk);let crown=new THREE.Mesh(new THREE.IcosahedronGeometry(1.3,1),mat(0x394b3d));crown.position.set(x,2.5,z);crown.scale.y=1.2;scene.add(crown)}
-// abandoned car
-block(-3,.5,2.4,1.1,4,0x424b4c).position.y=.65;
-const loot=[];
-function item(name,x,z,color){const mesh=new THREE.Mesh(new THREE.BoxGeometry(.35,.45,.3),mat(color));mesh.position.set(x,.35,z);mesh.castShadow=true;scene.add(mesh);loot.push({name,mesh})}
-item('Бутылка воды',1,1,0x5b9da0);item('Консервы',-1,-5,0x9b8054);item('Бинты',2,-12,0xd8d5c8);item('Металлолом',-2,-18,0x858b85);
-const inventory=[];let health=100,hunger=100,thirst=100;
-const keys={x:0,y:0};let yaw=0,pitch=0;const forward=new THREE.Vector3(),right=new THREE.Vector3();
-const stick=document.querySelector('#stick'),nub=document.querySelector('#nub');let stickId=null,lookId=null,lastX=0,lastY=0;
-function moveStick(e){const r=stick.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let dx=e.clientX-cx,dy=e.clientY-cy;const max=42,len=Math.hypot(dx,dy);if(len>max){dx=dx/len*max;dy=dy/len*max}keys.x=dx/max;keys.y=dy/max;nub.style.transform='translate('+dx+'px,'+dy+'px)'}
-stick.addEventListener('pointerdown',e=>{stickId=e.pointerId;stick.setPointerCapture(stickId);moveStick(e)});
-stick.addEventListener('pointermove',e=>{if(e.pointerId===stickId)moveStick(e)});
-function releaseStick(e){if(e.pointerId===stickId){stickId=null;keys.x=keys.y=0;nub.style.transform='translate(0,0)'}}
-stick.addEventListener('pointerup',releaseStick);stick.addEventListener('pointercancel',releaseStick);
-renderer.domElement.addEventListener('pointerdown',e=>{if(e.clientX<innerWidth*.42)return;lookId=e.pointerId;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(lookId)});
-renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerId!==lookId)return;let dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;yaw-=dx*.004;pitch=Math.max(-1.1,Math.min(1.1,pitch-dy*.003));});
-renderer.domElement.addEventListener('pointerup',e=>{if(e.pointerId===lookId)lookId=null});
-document.querySelector('#take').onclick=()=>{let target=null,best=2.5;for(const l of loot){let d=camera.position.distanceTo(l.mesh.position);if(d<best){best=d;target=l}}if(target){inventory.push(target.name);scene.remove(target.mesh);loot.splice(loot.indexOf(target),1);document.querySelector('#hint').textContent='Подобрано: '+target.name;updateBag()}else document.querySelector('#hint').textContent='Рядом нет предметов для подбора'};
-function updateBag(){document.querySelector('#items').innerHTML=inventory.length?inventory.map((v,i)=>(i+1)+'. '+v).join('<br>'):'Пока пусто'}
-const panel=document.querySelector('#inventory');document.querySelector('#bag').onclick=()=>{updateBag();panel.style.display='block'};document.querySelector('#close').onclick=()=>panel.style.display='none';
-let last=performance.now(),elapsed=0;
-function animate(now){requestAnimationFrame(animate);let dt=Math.min((now-last)/1000,.05);last=now;elapsed+=dt;
-yaw+=0;camera.rotation.order='YXZ';camera.rotation.set(pitch,yaw,0);
-forward.set(-Math.sin(yaw),0,-Math.cos(yaw));right.set(Math.cos(yaw),0,-Math.sin(yaw));
-const speed=4.2;camera.position.addScaledVector(forward,-keys.y*speed*dt);camera.position.addScaledVector(right,keys.x*speed*dt);camera.position.y=1.7;
-camera.position.x=THREE.MathUtils.clamp(camera.position.x,-35,35);camera.position.z=THREE.MathUtils.clamp(camera.position.z,-85,12);
-if(elapsed>8){hunger=Math.max(0,hunger-dt*.055);thirst=Math.max(0,thirst-dt*.085);if(hunger===0||thirst===0)health=Math.max(0,health-dt*.2)}
-document.querySelector('#health').textContent=Math.round(health);document.querySelector('#hunger').textContent=Math.round(hunger);document.querySelector('#thirst').textContent=Math.round(thirst);
-renderer.render(scene,camera)}
-requestAnimationFrame(animate);
+const root=document.querySelector('#game'),scene=new THREE.Scene();scene.background=new THREE.Color(0x89918a);scene.fog=new THREE.FogExp2(0x89918a,.023);
+const camera=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.1,130);camera.position.set(0,1.7,9);
+const renderer=new THREE.WebGLRenderer({antialias:false,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.35));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=false;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;root.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xcbd5d0,0x30352f,2.0));const sun=new THREE.DirectionalLight(0xd8d1bd,1.65);sun.position.set(-12,22,10);scene.add(sun);
+function texture(kind,base,detail){const c=document.createElement('canvas');c.width=256;c.height=256;const x=c.getContext('2d');x.fillStyle=base;x.fillRect(0,0,256,256);
+if(kind==='brick'){for(let y=0;y<256;y+=28){let off=(y/28%2)*32;for(let xx=-32;xx<288;xx+=64){x.fillStyle='#77736a';x.fillRect(xx+off,y,61,25);x.fillStyle='#393d3a';x.fillRect(xx+off,y+25,61,3)}}}
+if(kind==='concrete'){for(let i=0;i<900;i++){let v=Math.random()*55;x.fillStyle='rgba('+v+','+v+','+v+',.20)';x.fillRect(Math.random()*256,Math.random()*256,1+Math.random()*5,1+Math.random()*4)}for(let i=0;i<18;i++){x.strokeStyle='rgba(20,25,23,.25)';x.beginPath();let a=Math.random()*256,b=Math.random()*256;x.moveTo(a,b);x.lineTo(a+Math.random()*30-15,b+Math.random()*55);x.stroke()}}
+if(kind==='asphalt'){for(let i=0;i<1800;i++){let v=70+Math.random()*65;x.fillStyle='rgba('+v+','+v+','+v+',.22)';x.fillRect(Math.random()*256,Math.random()*256,1+Math.random()*3,1+Math.random()*2)}}
+if(kind==='metal'){for(let i=0;i<90;i++){x.fillStyle=i%3?'rgba(15,20,19,.18)':'rgba(190,130,70,.28)';x.fillRect(Math.random()*256,Math.random()*256,2+Math.random()*35,1+Math.random()*3)}}
+const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(2,2);return t}
+const concrete=texture('concrete','#777a72'),brick=texture('brick','#71685e'),asphalt=texture('asphalt','#303533'),metal=texture('metal','#515a56');
+const standard=(color,map=null,rough=1)=>new THREE.MeshStandardMaterial({color,map,roughness:rough});
+function box(x,y,z,w,h,d,material,rot=0){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.rotation.y=rot;scene.add(m);return m}
+function groundPlane(w,d,x,z,material){const m=new THREE.Mesh(new THREE.PlaneGeometry(w,d),material);m.rotation.x=-Math.PI/2;m.position.set(x,.015,z);scene.add(m);return m}
+groundPlane(100,130,0,-45,standard(0x77766b));groundPlane(11,120,0,-45,standard(0xffffff,asphalt));
+const sidewalk=standard(0xb0a995,concrete),wall1=standard(0xffffff,brick),wall2=standard(0xffffff,concrete),rust=standard(0xffffff,metal),dark=standard(0x242a28),glass= new THREE.MeshStandardMaterial({color:0x344746,metalness:.45,roughness:.28}),wood=standard(0x51483b);
+for(let side of [-1,1]){for(let i=0;i<7;i++){let z=-i*15-8,w=8+Math.random()*3,h=7+Math.random()*5,d=10+Math.random()*3,x=side*(10+w/2);box(x,h/2,z,w,h,d,i%2?wall1:wall2);box(x,h+.12,z,w+.2,.25,d+.2,standard(0x393e3a)); 
+// окна фасада
+for(let floor=0;floor<2;floor++)for(let win=0;win<3;win++){let wx=x+side*(-w/2-.025), wz=z-3.1+win*3.1;box(wx,2.0+floor*2.7,wz,.08,1.35,1.45,glass);box(wx-side*.05,2.0+floor*2.7,wz,.12,.08,1.55,rust);box(wx-side*.05,2.0+floor*2.7,wz,.12,1.45,.08,rust)}
+box(side*5.9,.65,z-2,1.3,1.3,10,side===1?sidewalk:sidewalk);
+}}
+ // подъездные двери, вывески, ограждения и мусор
+for(let s of [-1,1]){for(let i=0;i<5;i++){let z=-i*18-4;box(s*5.88,1.25,z, .13,2.5,1.3,wood);box(s*5.78,2.65,z,.25,.12,1.7,rust)}
+for(let i=0;i<18;i++){let x=s*(6.8+Math.random()*2.2),z=5-Math.random()*105;let size=.15+Math.random()*.35;let debris=box(x,size/2,z,size*1.8,size,size, i%2?rust:wood,Math.random());}
+}
+ // деревья и кусты
+const trunkMat=standard(0x44382d),leafMat=standard(0x35463a),bushMat=standard(0x3c4938);
+for(let i=0;i<26;i++){let s=i%2?1:-1,x=s*(7.5+Math.random()*5),z=4-Math.random()*105;let tr=new THREE.Mesh(new THREE.CylinderGeometry(.13,.25,2.5,6),trunkMat);tr.position.set(x,1.25,z);scene.add(tr);let crown=new THREE.Mesh(new THREE.IcosahedronGeometry(1.35,1),leafMat);crown.position.set(x,3,z);crown.scale.set(1,1.35,.9);scene.add(crown);for(let j=0;j<3;j++){let b=new THREE.Mesh(new THREE.IcosahedronGeometry(.55,0),bushMat);b.position.set(x+(Math.random()-.5),.45,z+(Math.random()-.5));scene.add(b)}}
+ // фонари
+for(let s of [-1,1])for(let i=0;i<5;i++){let z=-i*22-5,x=s*5.1;let pole=new THREE.Mesh(new THREE.CylinderGeometry(.07,.1,5,7),rust);pole.position.set(x,2.5,z);scene.add(pole);box(x-s*.45,5,z,.9,.09,.13,rust);let lamp=new THREE.PointLight(0xc3b99a,.35,8);lamp.position.set(x-s*.8,4.8,z);scene.add(lamp)}
+ // брошенные машины
+function car(x,z,color,angle=0){const body=standard(color),tire=standard(0x171b1a),wheelGeo=new THREE.CylinderGeometry(.38,.38,.22,10);let g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=angle;scene.add(g);let a=box(0,.72,0,2.05,.72,4.1,body);a.parent.remove(a);g.add(a);a.position.y=.72;let cabin=new THREE.Mesh(new THREE.BoxGeometry(1.65,.78,2.05),glass);cabin.position.set(0,1.38,-.2);g.add(cabin);for(let xx of [-1,1])for(let zz of [-1.35,1.35]){let w=new THREE.Mesh(wheelGeo,tire);w.rotation.z=Math.PI/2;w.position.set(xx*1.02,.4,zz);g.add(w)}let bumper=box(0,.48,2.08,2.1,.18,.15,rust);g.add(bumper);bumper.position.set(0,.48,2.08)}
+car(-2.8,-1,0x555d59,.12);car(3.0,-29,0x555044,-.18);car(-3.2,-61,0x4c5556,.3);
+ // бетонные блоки, баррикада и мусорные контейнеры
+for(let i=0;i<5;i++){let z=-i*17-12;box(4.5,.65,z,1.1,1.3,2.1,standard(0x777a72,concrete),.1);box(-5.1,.9,z-4,1.3,1.8,1.2,rust)}
+ // трещины/разметка дороги
+const lineMat=new THREE.MeshBasicMaterial({color:0x8c897b,transparent:true,opacity:.22});for(let i=0;i<16;i++){let m=new THREE.Mesh(new THREE.PlaneGeometry(.09,2.1),lineMat);m.rotation.x=-Math.PI/2;m.position.set((i%2?-.12:.12),.025,-i*7-2);scene.add(m)}
+const loot=[];function item(name,x,z,color,shape='box'){let geo=shape==='cyl'?new THREE.CylinderGeometry(.16,.16,.38,10):new THREE.BoxGeometry(.38,.35,.32);let mesh=new THREE.Mesh(geo,standard(color));mesh.position.set(x,.28,z);scene.add(mesh);loot.push({name,mesh})}
+item('Бутылка воды',1.4,1,0x668d8c,'cyl');item('Консервы',-1.4,-7,0x9a8058,'cyl');item('Медицинский бинт',2.2,-19,0xd1c9b8);item('Металлолом',-2.2,-34,0x82877e);item('Сухой паёк',1.8,-49,0x81704f);item('Патроны (пустая гильза)',-1.8,-69,0xb18a4d);
+const inventory=[];let health=100,hunger=100,thirst=100;const keys={x:0,y:0};let yaw=0,pitch=0;const forward=new THREE.Vector3(),right=new THREE.Vector3();const stick=document.querySelector('#stick'),nub=document.querySelector('#nub');let stickId=null,lookId=null,lastX=0,lastY=0;
+function moveStick(e){const r=stick.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let dx=e.clientX-cx,dy=e.clientY-cy,max=42,len=Math.hypot(dx,dy);if(len>max){dx=dx/len*max;dy=dy/len*max}keys.x=dx/max;keys.y=dy/max;nub.style.transform='translate('+dx+'px,'+dy+'px)'}
+stick.addEventListener('pointerdown',e=>{stickId=e.pointerId;stick.setPointerCapture(stickId);moveStick(e)});stick.addEventListener('pointermove',e=>{if(e.pointerId===stickId)moveStick(e)});function release(e){if(e.pointerId===stickId){stickId=null;keys.x=keys.y=0;nub.style.transform='translate(0,0)'}}stick.addEventListener('pointerup',release);stick.addEventListener('pointercancel',release);
+renderer.domElement.addEventListener('pointerdown',e=>{if(e.clientX<innerWidth*.42)return;lookId=e.pointerId;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(lookId)});renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerId!==lookId)return;let dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;yaw-=dx*.004;pitch=Math.max(-1.05,Math.min(1.05,pitch-dy*.003))});renderer.domElement.addEventListener('pointerup',e=>{if(e.pointerId===lookId)lookId=null});
+document.querySelector('#take').onclick=()=>{let target=null,best=2.7;for(const l of loot){let d=camera.position.distanceTo(l.mesh.position);if(d<best){best=d;target=l}}if(target){inventory.push(target.name);scene.remove(target.mesh);loot.splice(loot.indexOf(target),1);document.querySelector('#hint').textContent='ПОДОБРАНО: '+target.name;updateBag()}else document.querySelector('#hint').textContent='Подойдите ближе к предмету'};
+function updateBag(){document.querySelector('#items').innerHTML=inventory.length?inventory.map((v,i)=>(i+1)+'. '+v).join('<br>'):'Пока пусто'}const panel=document.querySelector('#inventory');document.querySelector('#bag').onclick=()=>{updateBag();panel.style.display='block'};document.querySelector('#close').onclick=()=>panel.style.display='none';
+let last=performance.now(),elapsed=0;function animate(now){requestAnimationFrame(animate);let dt=Math.min((now-last)/1000,.05);last=now;elapsed+=dt;camera.rotation.order='YXZ';camera.rotation.set(pitch,yaw,0);forward.set(-Math.sin(yaw),0,-Math.cos(yaw));right.set(Math.cos(yaw),0,-Math.sin(yaw));let speed=4.0;camera.position.addScaledVector(forward,-keys.y*speed*dt);camera.position.addScaledVector(right,keys.x*speed*dt);camera.position.y=1.7;camera.position.x=THREE.MathUtils.clamp(camera.position.x,-4.4,4.4);camera.position.z=THREE.MathUtils.clamp(camera.position.z,-105,10);if(elapsed>8){hunger=Math.max(0,hunger-dt*.035);thirst=Math.max(0,thirst-dt*.055);if(hunger===0||thirst===0)health=Math.max(0,health-dt*.15)}document.querySelector('#health').textContent=Math.round(health);document.querySelector('#hunger').textContent=Math.round(hunger);document.querySelector('#thirst').textContent=Math.round(thirst);renderer.render(scene,camera)}requestAnimationFrame(animate);
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
-</script>
-</body></html>
+</script></body></html>
