@@ -33,6 +33,13 @@
 #avatarFigure .head{position:absolute;width:27px;height:27px;border-radius:50%;background:#a9b3a5;left:16px;top:0}
 #avatarFigure .body{position:absolute;width:42px;height:59px;background:linear-gradient(90deg,#38463f,#788277,#344139);left:8px;top:31px;border-radius:12px}
 #avatarFigure .legs{position:absolute;left:11px;top:84px;width:36px;height:42px;border-left:13px solid #454d47;border-right:13px solid #454d47}
+#avatarFigure .head:before{content:"";position:absolute;left:-3px;top:-5px;width:33px;height:13px;border-radius:12px 12px 5px 5px;background:#282c28}
+#avatarFigure .body:before{content:"";position:absolute;left:-10px;top:5px;width:15px;height:43px;border-radius:8px;background:#465249;transform:rotate(9deg);box-shadow:47px 0 0 #465249}
+#avatarFigure .body:after{content:"";position:absolute;left:18px;top:3px;width:7px;height:53px;background:#a18d69;border-radius:4px;transform:rotate(7deg);opacity:.85}
+#flashlightBtn{position:fixed!important;right:18px!important;bottom:204px!important;z-index:12!important;width:54px;height:54px;padding:0!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;font-size:25px!important;background:rgba(22,35,30,.88)!important;border:1px solid #c8d9c477!important;box-shadow:0 4px 18px #0008}
+#flashlightBtn.active{background:#b29b58!important;color:#101610!important;box-shadow:0 0 22px #e6d18b99}
+@media(max-height:650px){#flashlightBtn{bottom:178px!important}}
+
 .equipSlot{display:block;width:100%;margin:5px 0;padding:7px;background:#1a2823;border:1px dashed #9aab9a66;border-radius:7px;color:#dce7dc;text-align:left;font-size:10px}
 #bagItems{font-size:12px;line-height:1.55}.bagItem{padding:8px 4px;border-bottom:1px solid #ffffff18}
 .bagItem button{margin:4px;background:#34483e;border:1px solid #b9cbb955;color:#fff;border-radius:6px;padding:5px 8px;font-size:10px}
@@ -77,7 +84,7 @@ const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-per
 scene.add(new THREE.HemisphereLight(0xbac7c0,0x242a27,1.45));const sun=new THREE.DirectionalLight(0xd0c7b5,.95);sun.position.set(-12,22,10);scene.add(sun);
 const flashlight=new THREE.SpotLight(0xe4f0dc,0,34,Math.PI/7,.38,1.25);flashlight.position.set(0,0,0);flashlight.target.position.set(0,0,-1);flashlight.castShadow=false;camera.add(flashlight);camera.add(flashlight.target);
 const flashlightBtn=document.querySelector('#flashlightBtn');let flashlightOn=false;
-flashlightBtn.addEventListener('click',()=>{flashlightOn=!flashlightOn;flashlight.intensity=flashlightOn?7.5:0;flashlightBtn.classList.toggle('active',flashlightOn);flashlightBtn.setAttribute('aria-pressed',String(flashlightOn));document.querySelector('#hint').textContent=flashlightOn?'ФОНАРИК ВКЛЮЧЁН':'ФОНАРИК ВЫКЛЮЧЕН';});
+flashlightBtn.addEventListener('click',()=>{flashlightOn=!flashlightOn;flashlight.intensity=flashlightOn?9:0;flashlightBtn.classList.toggle('active',flashlightOn);flashlightBtn.setAttribute('aria-pressed',String(flashlightOn));flashlightBtn.textContent=flashlightOn?'◉':'☼';document.querySelector('#hint').textContent=flashlightOn?'ФОНАРИК ВКЛЮЧЁН':'ФОНАРИК ВЫКЛЮЧЕН';});
 
 function texture(kind,base,detail){
 const c=document.createElement('canvas');c.width=1024;c.height=1024;const x=c.getContext('2d');x.fillStyle=base;x.fillRect(0,0,1024,1024);
