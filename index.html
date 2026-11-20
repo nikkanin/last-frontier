@@ -141,6 +141,62 @@
  #radar{width:104px;height:104px}#radar canvas{width:104px;height:104px}
  #radarLegend{top:112px;left:8px}
 }
+
+/* FINAL MOBILE MANGA HUD LAYOUT — clear play area, invisible movement pad */
+html,body{overflow:hidden;overscroll-behavior:none;background:#090909}
+#game{position:fixed;inset:0;z-index:0}
+#game canvas{display:block;width:100%;height:100%;touch-action:none;filter:contrast(1.12) brightness(1.03)}
+/* Movement remains fully touch-active; only its artwork is invisible */
+#stick{position:fixed!important;left:0!important;bottom:0!important;top:auto!important;width:44vw!important;height:48vh!important;max-width:48vw!important;max-height:54vh!important;border:0!important;border-radius:0!important;background:transparent!important;opacity:0!important;z-index:4!important;touch-action:none!important;pointer-events:auto!important}
+#nub{display:none!important}
+/* Keep the actual survival meters visible in a compact top strip */
+#hud{display:flex!important;position:fixed;z-index:8;left:8px;right:auto;top:8px;gap:4px;max-width:calc(100vw - 150px);flex-wrap:wrap}
+#hud .stat{min-width:0;padding:5px 7px;border-radius:2px;background:#080808d9;border:1px solid #c9c0ad88;color:#e9e1d0;font:9px Georgia,serif}
+#hud .stat b{font-size:12px;color:#f5eddd}
+#hud .noiseTrack{width:42px}
+#radar{position:fixed!important;left:8px!important;top:68px!important;width:94px!important;height:94px!important;z-index:7!important;filter:grayscale(1) contrast(1.2) drop-shadow(2px 3px 0 #000)!important}
+#radar canvas{width:94px!important;height:94px!important}
+#radarLegend{left:8px!important;top:164px!important;max-width:105px;font:8px Georgia,serif;background:#080808c9;border:1px solid #c9c0ad88;border-radius:0;color:#e9e1d0}
+#weaponStatus{display:block!important;position:fixed;z-index:8;left:112px;top:91px;bottom:auto;transform:none;padding:5px 7px;border-radius:0;background:#080808c9;border:1px solid #c9c0ad88;color:#e9e1d0;font:9px Georgia,serif}
+/* Mission strip */
+#mangaMission{top:8px!important;right:8px!important;left:auto!important;min-width:0!important;width:min(48vw,245px);padding:7px 9px!important;gap:7px!important;z-index:9;background:#080808eF;border:1px solid #bcae91;border-bottom:2px solid #b48b43;clip-path:none}
+#mangaMission .missionMark{width:23px;height:23px;font-size:15px;flex:none}
+#mangaMission b{font-size:8px}
+#mangaMission strong{font-size:11px;line-height:1.15}
+/* Companion cards stay compact and never cover the middle of the scene */
+#mangaParty{top:29%!important;left:7px!important;width:clamp(72px,19vw,112px)!important;gap:5px!important;z-index:7}
+.partyCard{gap:4px!important;padding:3px!important;background:#080808bd;border:1px solid #bfb49e88;clip-path:none}
+.partyPortrait{width:38px!important;height:42px!important;border:1px solid #d5c9b0}
+.partyInfo{font-size:10px!important}
+.partyInfo i{width:30px!important;height:3px!important;margin-top:3px!important}
+/* Action cluster sits in a single compact block on the lower-right */
+#actions{position:fixed!important;right:8px!important;bottom:9px!important;top:auto!important;left:auto!important;z-index:14!important;display:grid!important;grid-template-columns:repeat(3,46px);grid-auto-rows:43px;gap:5px!important;align-items:stretch!important;justify-items:stretch!important;width:max-content;max-width:150px}
+#actions button{position:static!important;display:flex;align-items:center;justify-content:center;min-width:0!important;width:46px!important;height:43px!important;padding:3px!important;margin:0!important;border:1px solid #d0c4aa!important;border-radius:2px!important;background:#090909dc!important;color:#f2ead9!important;box-shadow:2px 2px 0 #0009!important;font:20px Georgia,serif!important;letter-spacing:0!important;backdrop-filter:none!important}
+#actions #interactBtn{grid-column:1/4;width:100%!important;height:34px!important;min-height:34px!important;font:10px Georgia,serif!important;letter-spacing:.04em!important;background:#d7c8a9!important;color:#171512!important;border:2px solid #171512!important}
+#actions #take{display:none!important}
+#actions #questBtn{display:none!important}
+/* The dedicated side menu is the only bag/map/menu entry point */
+#mangaSideMenu{position:fixed!important;right:8px!important;top:27%!important;z-index:13!important;display:flex!important;flex-direction:column!important;gap:6px!important}
+#mangaSideMenu button{width:49px!important;min-height:48px!important;padding:4px 2px!important;background:#080808d9!important;border:1px solid #cdbf9f!important;color:#f3ead7!important;border-radius:0!important;font:9px Georgia,serif!important}
+#mangaSideMenu button span{font-size:23px!important;line-height:1.05}
+/* Dialogue panel is hidden until an actual dialogue is opened; never blocks movement */
+#mangaDialogue{display:none!important;pointer-events:none!important}
+#mangaDialogue #dialogueNext{pointer-events:auto!important}
+#mangaDialogue.show{display:flex!important;pointer-events:none!important;left:8px!important;right:68px!important;bottom:8px!important;min-height:88px!important;height:auto!important;max-height:22vh!important;padding:6px 30px 6px 6px!important;gap:8px!important;clip-path:none!important;z-index:11!important}
+#mangaDialogue.show .dialoguePortrait{width:64px!important;height:84px!important;margin:0!important}
+#mangaDialogue.show .dialogueCopy{font-size:12px!important}
+#hint{top:auto!important;left:50%!important;bottom:clamp(165px,22vh,205px)!important;transform:translateX(-50%)!important;max-width:48vw!important;max-height:40px!important;padding:5px 8px!important;background:#080808d9!important;border:1px solid #c9c0ad88!important;border-radius:0!important;color:#f0e8d8!important;font:9px Georgia,serif!important;z-index:10!important}
+#cross{z-index:6!important}
+#damageFlash{z-index:15!important;pointer-events:none!important}
+/* Panels cover the game only while intentionally opened */
+#inventory,#shopPanel,#blackPanel,#gymPanel,#playerTrade,#questPanel,#redRoomPanel,#privateScene{z-index:30!important;max-width:94vw;max-height:86dvh;overflow:auto;border:2px solid #28251f!important;border-radius:0!important;background:#e8dfca!important;color:#24211c!important;box-shadow:6px 6px 0 #0009!important}
+@media(min-width:700px){
+ #stick{width:38vw!important;height:55vh!important}
+ #actions{grid-template-columns:repeat(3,54px);grid-auto-rows:50px;max-width:180px}
+ #actions button{width:54px!important;height:50px!important}
+ #actions #interactBtn{height:38px!important}
+ #mangaSideMenu button{width:58px!important;min-height:56px!important}
+}
 </style><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script><script>window.addEventListener("error",function(e){const h=document.querySelector("#hint");if(h)h.textContent="ОШИБКА ЗАПУСКА 3D: "+(e.message||"не удалось загрузить игровой модуль")+" · обновите страницу";});window.addEventListener("unhandledrejection",function(e){const h=document.querySelector("#hint");if(h)h.textContent="ОШИБКА 3D: "+String(e.reason||"неизвестная ошибка")+" · обновите страницу";});</script></head><body>
 <div id="game"></div>
 <div id="mangaMission"><span class="missionMark">!</span><div><b>ОСНОВНОЕ ЗАДАНИЕ:</b><strong>Найти выход из города</strong></div></div>
